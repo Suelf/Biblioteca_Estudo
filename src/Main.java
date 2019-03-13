@@ -1,15 +1,11 @@
-import javax.accessibility.AccessibleExtendedText;
-import javax.swing.*;
-import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 
 public class Main {
-    public static ArrayList<Livro> acervo = new ArrayList<Livro>();
+    public static ArrayList<ILivro> acervo = new ArrayList<ILivro>();
     public static ArrayList<Autor> escritores = new ArrayList<Autor>();
-    
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 
@@ -75,14 +71,7 @@ public class Main {
 
         System.out.println("˜˜˜˜˜CADASTRO DE LIVROS˜˜˜˜˜");
         System.out.println();
-        System.out.println("Informe o nome do Livro: ");
-        Scanner scanner = new Scanner(System.in);
-        String titulo = scanner.next();
 
-
-        System.out.println("Informe a edicao do livro: ");
-        Scanner scanner1 = new Scanner(System.in);
-        int edicao = scanner1.nextInt();
 
         System.out.println("Informe o nome do Autor: ");
         Scanner scanner2 = new Scanner(System.in);
@@ -94,13 +83,27 @@ public class Main {
             return;
         }
 
-        Livro novoLivro = new Livro(titulo, edicao);
-        novoLivro.setAutor(autor);
+        System.out.println("Digite o tipo do livro: ");
+        System.out.println("1 - Para Didatico");
+        System.out.println("2 - Para Literario");
+        int tipo = scanner2.nextInt();
+        ILivro novoLivro ;
 
+        switch (tipo){
+            case 1:
+                novoLivro = new LivroDidatico();
+                break;
+            case 2:
+                novoLivro = new LivroLiterario();
+                break;
+            default:
+                System.out.println("TIPO NAO ENCONTRADO!");
+                return;
+        }
+
+        novoLivro.criar(autor);
         autor.setQtdObras(autor.getQtdObras() + 1);
         acervo.add(novoLivro);
-
-
         System.out.println("˜˜˜˜˜   LIVRO CADASTRADO!!   ˜˜˜˜˜");
         System.out.println();
         System.out.println();
@@ -114,8 +117,8 @@ public class Main {
         System.out.println();
         System.out.println("˜˜˜˜˜˜˜LISTA DE LIVROS˜˜˜˜˜˜");
         for (int i= 0; i < acervo.size(); i++){
-            Livro livro = acervo.get(i);
-            livro.imprimir();
+            ILivro livroDidatico = acervo.get(i);
+            livroDidatico.imprimir();
         }
         System.out.println("˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜˜");
 
@@ -126,18 +129,11 @@ public class Main {
         System.out.println("Informe o nome do livro que deseja editar: ");
         Scanner scanner = new Scanner(System.in);
         String le = scanner.next();
-        Livro encontrado = BuscarLivro(le);
+        ILivro encontrado = BuscarLivro(le);
         if(encontrado != null){
-            System.out.println("Informe outro nome: ");
-            scanner = new Scanner(System.in);
-            String NovoN = scanner.next();
-            encontrado.setTitulo(NovoN);
-
-            System.out.println("Informe á edicao: ");
-            int NovoE = scanner.nextInt();
-            encontrado.setEdicao(NovoE);
+            encontrado.editar();
         }else{
-            System.err.println("Livro nao existe!!");
+            System.err.println("LivroDidatico nao existe!!");
         }
 
         System.out.println();
@@ -151,7 +147,7 @@ public class Main {
         System.out.println("Informe  o nome do livro que deseja remover: ");
         Scanner scanner = new Scanner(System.in);
         String nl = scanner.next();
-        Livro encontrado = BuscarLivro(nl);
+        ILivro encontrado = BuscarLivro(nl);
         if (encontrado != null){
             acervo.remove(encontrado);
         }else{
@@ -167,7 +163,7 @@ public class Main {
         System.out.println("Informe o titulo do livro: ");
         Scanner scanner = new Scanner(System.in);
         String nlivro = scanner.next();
-        Livro encontrado = BuscarLivro(nlivro);
+        ILivro encontrado = BuscarLivro(nlivro);
         if (encontrado != null){
             encontrado.imprimir();
         }else{
@@ -192,16 +188,16 @@ public class Main {
         System.out.println();
     }
 
-    public static Livro BuscarLivro(String nlivro) {
-        Livro livroEncontrado = null;
+    public static ILivro BuscarLivro(String nlivro) {
+        ILivro livroEncontrado = null;
         for (int i = 0; i < acervo.size(); i++) {
-            Livro budega = acervo.get(i);
+            ILivro budega = acervo.get(i);
             if( budega.getTitulo().equals(nlivro)) {
                 livroEncontrado = budega;
                 break;
             }
         }
-    return livroEncontrado;
+        return livroEncontrado;
     }
 
 

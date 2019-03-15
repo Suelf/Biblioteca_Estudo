@@ -212,4 +212,11 @@ public class Main {
         }
         return autorEncontrado;
     }
+    
+    public static RemoverAutor(){
+    
+    
+    
+    
+    }
 }

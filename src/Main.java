@@ -34,6 +34,9 @@ public class Main {
                 case "7":
                     Autores();
                     break;
+                case "8":
+                    QtdLivros();
+                    break;
                 default:
                     System.err.println("Opção incorreta! Digite novamente!!!");
             }
@@ -52,6 +55,7 @@ public class Main {
         System.out.println("5 - BUSCAR LIVROS .");
         System.out.println("6 -  LISTA DE LIVROS");
         System.out.println("7 -  AUTORES");
+        System.out.println("8 - QUANTIDADE DE LIVROS DIDATICO/LITERARIO");
         System.out.println();
         System.out.println("˜˜˜˜˜˜˜ MENU ˜˜˜˜˜˜˜˜˜˜˜˜");
         System.out.print("Digite uma opção: ");
@@ -92,9 +96,13 @@ public class Main {
         switch (tipo){
             case 1:
                 novoLivro = new LivroDidatico();
+                LivroDidatico livroD = new LivroDidatico();
+                livroD.setQtdLD(livroD.getQtdLD() + 1);
                 break;
             case 2:
                 novoLivro = new LivroLiterario();
+                LivroLiterario livroL = new LivroLiterario();
+                livroL.setQtdLL(livroL.getQtdLL() + 1);
                 break;
             default:
                 System.out.println("TIPO NAO ENCONTRADO!");
@@ -213,5 +221,16 @@ public class Main {
             }
         }
         return autorEncontrado;
+    }
+
+    public static void QtdLivros(){
+
+        System.out.println("    QUANTIDADE DE LIVROS");
+        System.out.println();
+        LivroDidatico LivroD = new LivroDidatico();
+        System.out.println("Livros Didatico: "+ LivroD.getQtdLD());
+        LivroLiterario LivroL = new LivroLiterario();
+        System.out.println("Livros Literario: "+ LivroL.getQtdLL());
+
     }
 }

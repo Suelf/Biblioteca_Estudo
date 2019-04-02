@@ -4,6 +4,7 @@ public class LivroLiterario implements ILivro{
 
     private Autor autor;
     private String titulo;
+    private int QtdLL;
 
 
     public Autor getAutor() {
@@ -21,6 +22,10 @@ public class LivroLiterario implements ILivro{
     public void setTitulo(String titulo) {
         this.titulo = titulo;
     }
+
+    public int getQtdLL() { return QtdLL; }
+
+    public void setQtdLL(int qtdLL) { QtdLL = qtdLL; }
 
     @Override
     public ILivro criar(Autor autor) {

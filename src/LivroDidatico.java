@@ -5,6 +5,7 @@ public class LivroDidatico implements ILivro{
     private String titulo;;
     private int edicao;
     private Autor autor;
+    private int QtdLD;
 
 
     public LivroDidatico(){
@@ -66,4 +67,8 @@ public class LivroDidatico implements ILivro{
     public void setAutor(Autor autor) {
         this.autor = autor;
     }
+
+    public int getQtdLD() { return QtdLD; }
+
+    public void setQtdLD(int qtdLD) { QtdLD = qtdLD; }
 }

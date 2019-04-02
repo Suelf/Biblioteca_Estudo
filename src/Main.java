@@ -150,6 +150,8 @@ public class Main {
         ILivro encontrado = BuscarLivro(nl);
         if (encontrado != null){
             acervo.remove(encontrado);
+            Autor autor = new Autor("remove");
+            autor.setQtdObras(autor.getQtdObras() - 1);
         }else{
             System.err.println("Livro nao encontrado!");
         }

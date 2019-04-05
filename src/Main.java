@@ -16,7 +16,10 @@ public class Main {
         if (ler == 1){
             System.out.println("Informe o nome de Usuario");
             Scanner scanner1 = new Scanner(System.in);
+            String senha = scanner1.next();
             Usuario usuario = new Usuario();
+            
+
 
         }
 

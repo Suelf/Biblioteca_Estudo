@@ -8,6 +8,17 @@ public class Main {
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
+        System.out.println("BEM VINDO A BIBLIOTECA");
+        System.out.println("Já possui uma conta ou deseja se registrar?");
+        System.out.println("Infome 1 para registrar");
+        System.out.println("2 se já possui uma conta");
+        int ler = scanner.nextInt();
+        if (ler == 1){
+            System.out.println("Informe o nome de Usuario");
+            Scanner scanner1 = new Scanner(System.in);
+            Usuario usuario = new Usuario();
+
+        }
 
         while(true){
             MostrarMenu();

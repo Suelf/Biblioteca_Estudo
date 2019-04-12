@@ -7,24 +7,10 @@ public class Main {
     public static ArrayList<Autor> escritores = new ArrayList<Autor>();
 
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("BEM VINDO A BIBLIOTECA");
-        System.out.println("Já possui uma conta ou deseja se registrar?");
-        System.out.println("Infome 1 para registrar");
-        System.out.println("2 se já possui uma conta");
-        int ler = scanner.nextInt();
-        if (ler == 1){
-            System.out.println("Informe o nome de Usuario");
-            Scanner scanner1 = new Scanner(System.in);
-            String senha = scanner1.next();
-            Usuario usuario = new Usuario();
-            
-
-
-        }
 
         while(true){
             MostrarMenu();
+        Scanner scanner = new Scanner(System.in);
             String iniciar = scanner.next();
             switch (iniciar){
                 case "1":
@@ -127,9 +113,6 @@ public class Main {
         autor.setQtdObras(autor.getQtdObras() + 1);
         acervo.add(novoLivro);
         System.out.println("˜˜˜˜˜   LIVRO CADASTRADO!!   ˜˜˜˜˜");
-        System.out.println();
-        System.out.println();
-        System.out.println();
     }
 
     private static void ListarLivros(){
@@ -157,11 +140,6 @@ public class Main {
         }else{
             System.err.println("LivroDidatico nao existe!!");
         }
-
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        System.out.println();
     }
 
     private static void RemoverLivro(){
@@ -177,9 +155,6 @@ public class Main {
         }else{
             System.err.println("Livro nao encontrado!");
         }
-        System.out.println();
-        System.out.println();
-        System.out.println();
     }
 
     private static void BuscarLivro(){
@@ -223,7 +198,6 @@ public class Main {
         }
         return livroEncontrado;
     }
-
 
     public static Autor BuscarAutor(String nome) {
         Autor autorEncontrado = null;
